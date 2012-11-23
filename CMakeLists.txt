@@ -9,8 +9,13 @@ include_directories (${OPENGL_INCLUDE_DIR})
 file (GLOB SOIL_SOURCES src/*.c)
 file (GLOB SOIL_HEADERS src/*.h)
 
-add_library (SOIL ${SOIL_SOURCES} ${SOIL_HEADERS})
-target_link_libraries (SOIL ${OPENGL_LIBRARIES})
+add_library (SOIL SHARED ${SOIL_SOURCES} ${SOIL_HEADERS})
+
+if(APPLE)
+  target_link_libraries (SOIL ${OPENGL_LIBRARIES} "-framework CoreFoundation")
+elseif(APPLE)
+  target_link_libraries (SOIL ${OPENGL_LIBRARIES})
+endif(APPLE)
 
 install (TARGETS SOIL
 	LIBRARY DESTINATION lib
