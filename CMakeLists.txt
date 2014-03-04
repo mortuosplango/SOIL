@@ -13,7 +13,7 @@ add_library (SOIL SHARED ${SOIL_SOURCES} ${SOIL_HEADERS})
 
 if(APPLE)
   target_link_libraries (SOIL ${OPENGL_LIBRARIES} "-framework CoreFoundation")
-elseif(APPLE)
+else(APPLE)
   target_link_libraries (SOIL ${OPENGL_LIBRARIES})
 endif(APPLE)
 
